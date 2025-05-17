@@ -278,27 +278,29 @@ Este projeto contém:
 https://douglasxara2011.atlassian.net/wiki/external/MzBjN2EwOWUxNjI2NDYwMjliNTE4YjJiNzdlNTY5NGQ
 
 
-📚 Referências Utilizadas no Projeto
+
+## 📚 Referências Utilizadas no Projeto
+
 Este projeto foi desenvolvido com base em diversas fontes de conhecimento técnico e acadêmico, bem como com o apoio de ferramentas modernas de desenvolvimento e inteligência artificial:
 
-🎓 Formação em Qualidade de Software (QA) pela Scholarship Compass UOL, com foco em testes automatizados, boas práticas de verificação e validação, e uso de frameworks como pytest.
-
-🧠 Engenharia de Software pela Unicesumar, aplicada no projeto através de:
-
-Elaboração de diagramas de classe UML.
-
-Uso de Programação Orientada a Objetos (POO) como base estrutural.
-
-Organização e sincronização de métodos, utilizando a classe main() para controle de fluxo.
-
-🚀 Conhecimentos consolidados em Programação de Sistemas, também pela Unicesumar, especialmente na modelagem e modularização do código.
-
-👨‍🏫 Aplicação de TDD (Test Driven Development) com apoio da mentoria da Compass UOL, garantindo confiabilidade nas funcionalidades antes da implementação.
-
-🤖 Documentação extensiva com IA, utilizando o ChatGPT (OpenAI) para:
-
-Apoio na redação e organização técnica do conteúdo.
-
-Geração assistida de trechos de código, análises e explicações.
-
-💡 Apoio prático com GitHub Copilot, para sugestões de código, estruturação automatizada de testes e otimização do desenvolvimento.
+  🎓 Formação em Qualidade de Software (QA) pela Scholarship Compass UOL, com foco em testes automatizados, boas práticas de verificação e validação, e uso de frameworks como pytest.
+    
+  🧠 Engenharia de Software pela Unicesumar, aplicada no projeto através de:
+    
+    Elaboração de diagramas de classe UML.
+    
+    Uso de Programação Orientada a Objetos (POO) como base estrutural.
+    
+    Organização e sincronização de métodos, utilizando a classe main() para controle de fluxo.
+    
+  🚀 Conhecimentos consolidados em Programação de Sistemas, também pela Unicesumar, especialmente na modelagem e modularização do código.
+    
+  👨‍🏫 Aplicação de TDD (Test Driven Development) com apoio da mentoria da Compass UOL, garantindo confiabilidade nas funcionalidades antes da implementação.
+    
+  🤖 Documentação extensiva com IA, utilizando o ChatGPT (OpenAI) para:
+    
+    Apoio na redação e organização técnica do conteúdo.
+    
+    Geração assistida de trechos de código, análises e explicações.
+    
+  💡 Apoio prático com GitHub Copilot, para sugestões de código, estruturação automatizada de testes e otimização do desenvolvimento.
