@@ -1,16 +1,91 @@
-# Calculadora Com TDD
+# 🧮 Projeto: Calculadora com TDD em Python
 
-## Descrição do Projeto
-Este projeto implementa uma calculadora simples em Python, utilizando o conceito de Test-Driven Development (TDD). A calculadora é composta por uma classe principal, `Calculadora`, que delega operações a seis classes de operações: `Adicao`, `Subtracao`, `Multiplicacao`, `Divisao`, `RaizQuadrada` e `Exponenciacao`.
+## ✅ Objetivo
 
-## Estrutura do Projeto
+Este projeto tem como objetivo desenvolver uma **Calculadora Modular em Python**, utilizando os princípios de **Programação Orientada a Objetos (POO)** e **Desenvolvimento Orientado a Testes (TDD)** com `pytest`.
+
+### Características:
+- Arquitetura baseada em **composição de classes**
+- Estrutura **modular e extensível**
+- Totalmente **testada com pytest**
+- Operações com valores do tipo **float**
+- Documentação com uso expressivo de IA ChatGPT
+- Implementação com Python, com condução da IA Github Copilot
+- Abordagem de Desenvolvimento: Test Driven Development
+- Técnicas de Teste: Particionamento de Equivalência, Análise do Valor Limite, Tabela de Decisão, Teste de Exceção
+
+## 🔧 Funcionalidades
+
+A Calculadora suporta as seguintes operações:
+
+- Adição
+- Subtração
+- Multiplicação
+- Divisão (com validação de divisão por zero)
+- Raiz Quadrada (com validação de valores negativos)
+- Exponenciação
+
+---
+
+## 📘 Diagrama de Classes (UML textual)
+
 ```
-Calculadora_Com_TDD
++---------------------------+
+|        Calculadora        |
++---------------------------+
+| - adicao: Adicao                         |
+| - subtracao: Subtracao                   |
+| - multiplicacao: Multiplicacao           |
+| - divisao: Divisao                       |
+| - raiz: RaizQuadrada                     |
+| - exponenciacao: Exponenciacao           |
++---------------------------+
+| + somar(a: float, b: float): float              |
+| + subtrair(a: float, b: float): float           |
+| + multiplicar(a: float, b: float): float        |
+| + dividir(a: float, b: float): float            |
+| + raiz_quadrada(a: float): float                |
+| + exponenciar(base: float, exp: float): float   |
++---------------------------+
+
++-------------------+       +----------------------+
+|      Adicao       |       |   Subtracao          |
++-------------------+       +----------------------+
+| + executar(a: float, b: float): float            |
++-------------------+       +----------------------+
+
++---------------------------+
+|      Multiplicacao        |
++---------------------------+
+| + executar(a: float, b: float): float            |
++---------------------------+
+
++-------------------+       +--------------------------+
+|      Divisao      |       |      RaizQuadrada        |
++-------------------+       +--------------------------+
+| + executar(a: float, b: float): float              |
+| (valida divisão por zero)                          |
++-------------------+       +--------------------------+
+
++--------------------------+
+|      Exponenciacao       |
++--------------------------+
+| + executar(base: float, exp: float): float         |
++--------------------------+
+```
+
+---
+
+## 🧱 Estrutura de Arquivos
+
+```
+Calculadora_Com_TDD/
+│
 ├── main.py
-├── calculadora
+├── calculadora/
 │   ├── __init__.py
 │   ├── calculadora.py
-│   ├── operacoes
+│   ├── operacoes/
 │   │   ├── __init__.py
 │   │   ├── adicao.py
 │   │   ├── subtracao.py
@@ -18,7 +93,7 @@ Calculadora_Com_TDD
 │   │   ├── divisao.py
 │   │   ├── raiz_quadrada.py
 │   │   └── exponenciacao.py
-│   └── tests
+│   └── tests/
 │       ├── __init__.py
 │       ├── test_calculadora.py
 │       ├── test_adicao.py
@@ -27,56 +102,177 @@ Calculadora_Com_TDD
 │       ├── test_divisao.py
 │       ├── test_raiz_quadrada.py
 │       └── test_exponenciacao.py
-└── README.md
 ```
 
-## Classes
-- **Calculadora**: Classe principal que compõe as operações.
-- **Adicao**: Realiza a soma de dois números.
-- **Subtracao**: Realiza a subtração de dois números.
-- **Multiplicacao**: Realiza a multiplicação de dois números.
-- **Divisao**: Realiza a divisão de dois números, com validação para divisão por zero.
-- **RaizQuadrada**: Calcula a raiz quadrada de um número, com validação para números negativos.
-- **Exponenciacao**: Calcula a potência de um número.
+---
 
-## Instruções de Uso
-1. Clone o repositório.
-2. Navegue até o diretório do projeto.
-3. Execute o arquivo `main.py` para interagir com a calculadora.
+## ✅ Operações e TDD
 
-## Exemplos de Uso
-```python
-from calculadora.calculadora import Calculadora
+### 🧪 Passo a Passo Geral
 
-calc = Calculadora()
+Para cada operação:
 
-# Adição
-resultado = calc.somar(2.0, 3.0)
-print(resultado)  # Saída: 5.0
+1. Criar o nome da operação e seu caso de teste.
+2. Descrever a expectativa (entrada → saída esperada).
+3. Criar o teste (que deve falhar inicialmente).
+4. Implementar o método mínimo que faz o teste passar.
+5. Rodar os testes e validar.
+6. Refatorar se necessário.
+7. Adicionar testes extras (valores limites, exceções etc).
 
-# Subtração
-resultado = calc.subtrair(5.0, 2.0)
-print(resultado)  # Saída: 3.0
+---
 
-# Multiplicação
-resultado = calc.multiplicar(4.0, 2.5)
-print(resultado)  # Saída: 10.0
+## 🔢 Casos e Implementações
 
-# Divisão
-resultado = calc.dividir(10.0, 2.0)
-print(resultado)  # Saída: 5.0
+### ✅ 1. Adição
 
-# Raiz Quadrada
-resultado = calc.raiz_quadrada(9.0)
-print(resultado)  # Saída: 3.0
+- Cenário: `2.0 + 3.0 = 5.0`
+- Teste: `test_adicao_simples`
+- Implementação: `return a + b`
+- Testes adicionais:
+  - `0 + 0`
+  - `-1 + 5`
+  - floats com casas decimais
 
-# Exponenciação
-resultado = calc.exponenciar(2.0, 3.0)
-print(resultado)  # Saída: 8.0
-```
+---
 
-## Testes
-Os testes foram implementados para cada operação e para a classe `Calculadora`, garantindo que todas as funcionalidades estejam corretas. Utilize o `pytest` para executar os testes.
+### ➖ 2. Subtração
 
-## Contribuições
-Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou pull requests.
+- Cenário: `5.0 - 2.0 = 3.0`
+- Teste: `test_subtracao_simples`
+- Implementação: `return a - b`
+- Casos extras:
+  - `0 - 0`
+  - `-3 - (-2)`
+  - floats com casas decimais
+
+---
+
+### ✖️ 3. Multiplicação
+
+- Cenário: `4.0 * 2.5 = 10.0`
+- Teste: `test_multiplicacao_simples`
+- Implementação: `return a * b`
+- Casos extras:
+  - `0 * qualquer número`
+  - negativos
+  - floats pequenos
+
+---
+
+### ➗ 4. Divisão
+
+- Cenários:
+  - `10.0 / 2.0 = 5.0`
+  - `10.0 / 0 → ZeroDivisionError`
+- Testes:
+  - `test_divisao_simples`
+  - `test_divisao_por_zero`
+- Implementação:
+  ```python
+  if b == 0.0:
+      raise ZeroDivisionError("Divisão por zero não permitida")
+  return a / b
+  ```
+
+---
+
+### 🟰 5. Raiz Quadrada
+
+- Cenários:
+  - `√9.0 = 3.0`
+  - `√-4.0 → ValueError`
+- Testes:
+  - `test_raiz_quadrada_simples`
+  - `test_raiz_quadrada_negativo`
+- Implementação:
+  ```python
+  if a < 0.0:
+      raise ValueError("Raiz de número negativo não permitida")
+  return math.sqrt(a)
+  ```
+
+---
+
+### 🔼 6. Exponenciação
+
+- Cenário: `2.0 ^ 3.0 = 8.0`
+- Teste: `test_exponenciacao_simples`
+- Implementação: `return base ** expoente`
+- Casos adicionais:
+  - expoente negativo
+  - expoente zero
+  - base decimal
+
+---
+
+## 🧮 7. Integração com a Classe Calculadora
+
+- A classe `Calculadora` instancia internamente as 6 operações.
+- Métodos públicos:
+  - `somar(a, b)`
+  - `subtrair(a, b)`
+  - `multiplicar(a, b)`
+  - `dividir(a, b)`
+  - `raiz_quadrada(a)`
+  - `exponenciar(base, expoente)`
+
+- Todos os testes de integração da `Calculadora` devem chamar essas funções e validar os resultados.
+
+---
+
+## 📐 Resumo
+
+Este projeto contém:
+
+- ✅ **7 classes**:
+  - `Calculadora` (principal)
+  - `Adicao`
+  - `Subtracao`
+  - `Multiplicacao`
+  - `Divisao`
+  - `RaizQuadrada`
+  - `Exponenciacao`
+  
+- ✅ **Cobertura completa de testes com `pytest`**
+- ✅ **Boas práticas de TDD**
+- ✅ **Estrutura modular e extensível**
+
+---
+
+## 🚀 Como Executar
+
+1. Clone este repositório:
+   ```bash
+   git clone https://github.com/seu-usuario/Calculadora_Com_TDD.git
+   cd Calculadora_Com_TDD
+   ```
+
+2. Crie um ambiente virtual:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # Windows: venv\Scripts\activate
+   ```
+
+3. Instale o pytest:
+   ```bash
+   pip install pytest
+   ```
+
+4. Execute os testes:
+   ```bash
+   pytest
+   ```
+
+---
+
+## 🧪 Requisitos
+
+- Python 3.8+
+- pytest
+
+---
+
+## 📄 Documentação
+
+https://douglasxara2011.atlassian.net/wiki/external/MzBjN2EwOWUxNjI2NDYwMjliNTE4YjJiNzdlNTY5NGQ
